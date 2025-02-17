@@ -64,7 +64,7 @@ const ExploreWork: React.FC = () => {
         icon: Film
     },
     {
-        role: "Socail media manager",
+        role: "Social media manager",
         company: "HippoToys",
         period: "2024",
         description: "Managed the social media accounts of the company and increased the reach of the company.",
