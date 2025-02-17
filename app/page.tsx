@@ -28,6 +28,7 @@ const Portfolio = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const projects = {
     director: [
       {
@@ -125,15 +126,15 @@ const Portfolio = () => {
           animate={{ y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <nav className="container mx-auto px-6 py-4">
+          <nav className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between items-center">
               <motion.h1
-                className="text-2xl font-light tracking-wide"
+                className="text-xl sm:text-2xl font-light tracking-wide"
                 whileHover={{ scale: 1.05 }}
               >
                 Anuj Pundhir
               </motion.h1>
-              <div className="flex space-x-8">
+              <div className="flex space-x-4 sm:space-x-8">
                 {[Camera, Film, PenTool, Mail].map((Icon, index) => (
                   <motion.div
                     key={index}
@@ -150,20 +151,20 @@ const Portfolio = () => {
 
         {/* Hero Content */}
         <motion.div
-          className="text-center z-40 space-y-6 relative"
+          className="text-center z-40 space-y-4 sm:space-y-6 relative px-4"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <h1 className="text-7xl font-bold tracking-widest text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-widest text-white mb-4">
             CREATIVE
           </h1>
-          <p className="text-2xl font-serif font-bold tracking-tighter text-white typewriter">
+          <p className="text-lg sm:text-xl md:text-2xl font-serif font-bold tracking-tighter text-white typewriter">
             DIRECTOR • MANAGER • STORY-WRITER
           </p>
-          <div className="pt-8">
+          <div className="pt-6 sm:pt-8">
             <motion.button
-              className="px-8 py-3 bg-transparent border border-gray-300 rounded-full hover:bg-gray-50 transition-all duration-300 text-sm tracking-wider text-white hover:text-gray-800"
+              className="px-6 sm:px-8 py-2 sm:py-3 bg-transparent border border-gray-300 rounded-full hover:bg-gray-50 transition-all duration-300 text-sm tracking-wider text-white hover:text-gray-800"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -174,14 +175,14 @@ const Portfolio = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-6 py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24">
         {/* Experience Tabs */}
-        <div className="flex justify-center space-x-12 mb-16">
+        <div className="flex justify-center space-x-4 sm:space-x-12 mb-8 sm:mb-16">
           {(["director", "business", "content"] as const).map((section) => (
             <motion.button
               key={section}
               onClick={() => setActiveSection(section)}
-              className={`group relative px-6 py-2 transition-all duration-300 ${
+              className={`group relative px-4 sm:px-6 py-2 transition-all duration-300 ${
                 activeSection === section
                   ? "text-blue-500"
                   : "text-gray-400 hover:text-gray-600"
@@ -206,7 +207,7 @@ const Portfolio = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSection}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -215,7 +216,7 @@ const Portfolio = () => {
             {projects[activeSection].map((project, index) => (
               <motion.div
                 key={index}
-                className={`${project.color} rounded-xl p-8 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer`}
+                className={`${project.color} rounded-xl p-6 sm:p-8 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -243,6 +244,7 @@ const Portfolio = () => {
             ))}
           </motion.div>
         </AnimatePresence>
+
         {/* Project Modal */}
         <AnimatePresence>
           {selectedProject && (
@@ -254,7 +256,7 @@ const Portfolio = () => {
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
-                className={`${selectedProject.color} p-8 rounded-xl max-w-2xl w-full mx-4 relative`}
+                className={`${selectedProject.color} p-6 sm:p-8 rounded-xl max-w-2xl w-full mx-4 relative`}
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
@@ -288,7 +290,7 @@ const Portfolio = () => {
         </AnimatePresence>
 
         {/* Stats Section */}
-        <div className="mt-32 grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="mt-16 sm:mt-32 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-12">
           {[
             { number: "03+", label: "Years Experience" },
             { number: "15+", label: "Projects" },
@@ -304,7 +306,7 @@ const Portfolio = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <h3 className="text-4xl font-light text-gray-800 group-hover:text-blue-500 transition-colors duration-300">
+              <h3 className="text-3xl sm:text-4xl font-light text-gray-800 group-hover:text-blue-500 transition-colors duration-300">
                 {stat.number}
               </h3>
               <p className="text-sm text-gray-500 mt-2 tracking-wider uppercase">
@@ -316,16 +318,16 @@ const Portfolio = () => {
       </div>
 
       {/* Contact Section */}
-      <div className="bg-gray-50 py-24">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-light tracking-wide mb-8">
+      <div className="bg-gray-50 py-12 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-light tracking-wide mb-6 sm:mb-8">
             Lets Create Something Beautiful
           </h2>
           <motion.a
             href="https://wa.me/916283779938"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-12 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm tracking-wider"
+            className="inline-block px-8 sm:px-12 py-3 sm:py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm tracking-wider"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
